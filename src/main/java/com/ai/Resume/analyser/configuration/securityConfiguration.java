@@ -38,7 +38,7 @@ public class securityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(requests-> requests
-                        .requestMatchers("/resumeAnalyser/entry/v1/**","/","/login","/forgotpassword","/static/**","/index.html","/manifest.json","/assets/**")
+                        .requestMatchers("/resumeAnalyser/entry/v1/**","/resumeAnalyserCore/service/v1/rag/**","/","/login","/forgotpassword","/static/**","/index.html","/manifest.json","/assets/**")
                         .permitAll()
                         .anyRequest().authenticated())
                 .cors(Customizer.withDefaults())
