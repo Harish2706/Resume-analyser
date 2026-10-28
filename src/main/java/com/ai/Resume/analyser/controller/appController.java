@@ -29,18 +29,7 @@ public class appController {
         return appServices.extract(roles,file);
     }
 
-    @PostMapping("/rag/search")
-    public ResponseEntity<?> ragSearch(@RequestBody RagSearchRequest req) {
-        if (req == null || req.getQuery() == null || req.getQuery().trim().isEmpty()) {
-            return ResponseEntity.badRequest().body("Query cannot be empty");
-        }
-        if (req.getDocumentText() == null || req.getDocumentText().trim().isEmpty()) {
-            return ResponseEntity.badRequest().body("Document text cannot be empty");
-        }
-        int topK = req.getTopK() > 0 ? req.getTopK() : 3;
-        RagResponse response = ragService.processRag(req.getQuery(), req.getDocumentText(), topK, false);
-        return ResponseEntity.ok(response);
-    }
+   
 
     @PostMapping("/rag/ask")
     public ResponseEntity<?> ragAsk(@RequestBody RagSearchRequest req) {
